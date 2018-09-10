@@ -9,7 +9,8 @@ ENTRYPOINT ["/usr/bin/tx"]
 
 RUN apt-get update && \
   apt-get upgrade -y && \
-  apt-get install -y git-core perl gettext liblocale-po-perl liblocale-gettext-perl transifex-client && \
+  apt-get install -y git-core perl gettext liblocale-po-perl liblocale-gettext-perl python3 python3-pip && \
+  pip3 install -U transifex-client==0.13.4 && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
