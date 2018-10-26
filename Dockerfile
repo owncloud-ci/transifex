@@ -1,4 +1,4 @@
-FROM owncloud/ubuntu:18.04
+FROM owncloud/ubuntu:16.04
 
 LABEL maintainer="ownCloud DevOps <devops@owncloud.com>" \
   org.label-schema.name="ownCloud CI Transifex" \
@@ -8,7 +8,7 @@ LABEL maintainer="ownCloud DevOps <devops@owncloud.com>" \
 ENTRYPOINT ["/usr/bin/tx"]
 
 RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - && \
-  echo "deb https://deb.nodesource.com/node_8.x bionic main" | tee /etc/apt/sources.list.d/node.list
+  echo "deb https://deb.nodesource.com/node_8.x xenial main" | tee /etc/apt/sources.list.d/node.list
 
 RUN apt-get update && \
   apt-get upgrade -y && \
