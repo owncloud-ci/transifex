@@ -2,6 +2,7 @@
 
 [![Build Status](https://drone.owncloud.com/api/badges/owncloud-ci/transifex/status.svg)](https://drone.owncloud.com/owncloud-ci/transifex)
 
+
 Transifex localization CLI tool for CI pipelines.
 
 ## License
