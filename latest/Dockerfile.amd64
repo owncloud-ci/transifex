@@ -10,7 +10,7 @@ LABEL org.opencontainers.image.documentation="https://github.com/owncloud-ci/tra
 ARG BUILD_VERSION
 
 # renovate: datasource=pypi depName=transifex-client
-ENV TRANSIFEX_VERSION="${BUILD_VERSION:-0.13.4}"
+ENV TRANSIFEX_VERSION="${BUILD_VERSION:-0.13.7}"
 
 RUN apt-get update && \
     apt-get upgrade -y && \
