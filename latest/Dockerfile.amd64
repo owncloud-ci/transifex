@@ -1,17 +1,21 @@
-FROM owncloud/ubuntu:16.04
+FROM owncloudci/nodejs:12
 
-LABEL maintainer="ownCloud DevOps <devops@owncloud.com>" \
-  org.label-schema.name="ownCloud CI Transifex" \
-  org.label-schema.vendor="ownCloud GmbH" \
-  org.label-schema.schema-version="1.0"
+LABEL maintainer="ownCloud DevOps <devops@owncloud.com>"
+LABEL org.opencontainers.image.authors="ownCloud DevOps <devops@owncloud.com>"
+LABEL org.opencontainers.image.title="ownCloud CI Transifex"
+LABEL org.opencontainers.image.url="https://github.com/owncloud-ci/transifex"
+LABEL org.opencontainers.image.source="https://github.com/owncloud-ci/transifex"
+LABEL org.opencontainers.image.documentation="https://github.com/owncloud-ci/transifex"
 
-RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - && \
-    echo "deb https://deb.nodesource.com/node_12.x xenial main" | tee /etc/apt/sources.list.d/node.list
+ARG BUILD_VERSION
+
+# renovate: datasource=pypi depName=transifex-client
+ENV TRANSIFEX_VERSION="${BUILD_VERSION:-0.13.4}"
 
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y git-core nodejs perl gettext liblocale-po-perl liblocale-gettext-perl python3 python3-pip && \
-    pip3 install -U transifex-client==0.13.4 && \
+    apt-get install -y git-core perl gettext liblocale-po-perl liblocale-gettext-perl python3 python3-pip && \
+    pip3 install -U "transifex-client==$TRANSIFEX_VERSION" && \
     npm install -g yarn && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
