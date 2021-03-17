@@ -22,4 +22,4 @@ RUN apt-get update && \
 
 COPY rootfs /
 
-ENTRYPOINT ["/usr/bin/tx"]
+ENTRYPOINT ["/usr/local/bin/tx"]
