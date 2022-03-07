@@ -10,7 +10,7 @@ LABEL org.opencontainers.image.documentation="https://github.com/owncloud-ci/tra
 ARG BUILD_VERSION
 
 # renovate: datasource=pypi depName=transifex-client
-ENV TRANSIFEX_VERSION="${BUILD_VERSION:-0.14.3}"
+ENV TRANSIFEX_VERSION="${BUILD_VERSION:-0.14.4}"
 
 RUN apt-get update && \
     apt-get install -y git-core perl gettext liblocale-po-perl liblocale-gettext-perl python3 python3-pip && \
