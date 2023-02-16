@@ -10,7 +10,7 @@ LABEL org.opencontainers.image.documentation="https://github.com/owncloud-ci/tra
 ARG BUILD_VERSION
 
 # renovate: datasource=github-releases depName=transifex/cli
-ENV TRANSIFEX_VERSION="${BUILD_VERSION:-1.6.4}"
+ENV TRANSIFEX_VERSION="${BUILD_VERSION:-v1.6.5}"
 
 RUN apt-get update && \
     apt-get install -y git-core perl gettext liblocale-po-perl liblocale-gettext-perl && \
