@@ -1,4 +1,4 @@
-FROM owncloudci/nodejs:16@sha256:ed2538943213a1759bbdc82bdad73bfc08e1cb79e48f2e3f2f904f32b512228f
+FROM alpine:3.17@sha256:69665d02cb32192e52e07644d76bc6f25abeb5410edc1c7a81a10ba3f0efb90a
 
 LABEL maintainer="ownCloud DevOps <devops@owncloud.com>"
 LABEL org.opencontainers.image.authors="ownCloud DevOps <devops@owncloud.com>"
@@ -12,12 +12,11 @@ ARG BUILD_VERSION
 # renovate: datasource=github-releases depName=transifex/cli
 ENV TRANSIFEX_VERSION="${BUILD_VERSION:-v1.6.5}"
 
-RUN apt-get update && \
-    apt-get install -y git-core perl gettext liblocale-po-perl liblocale-gettext-perl && \
-    curl -SsfL "https://github.com/transifex/cli/releases/download/v${TRANSIFEX_VERSION##v}/tx-linux-amd64.tar.gz" | tar xz -C /usr/local/bin tx && \
-    npm install -g yarn --force && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apk --update add --no-cache git-core perl gettext liblocale-po-perl liblocale-gettext-perl curl && \
+    curl -SsfL "https://github.com/transifex/cli/releases/download/v${TRANSIFEX_VERSION}/tx-linux-amd64.tar.gz" | tar xz -C /usr/local/bin tx && \
+    chmod 755 /usr/local/bin/tx && \
+    rm -rf /var/cache/apk/* && \
+    rm -rf /tmp/*
 
 COPY rootfs /
 
