@@ -20,7 +20,7 @@ RUN apt-get update && \
     apt-get install -y git-core perl gettext liblocale-po-perl liblocale-gettext-perl && \
     curl -SsfL "https://github.com/transifex/cli/releases/download/v${TRANSIFEX_VERSION##v}/tx-linux-amd64.tar.gz" | tar xz -C /usr/local/bin tx && \
     curl -SsfL "https://github.com/owncloud-ci/gettext/releases/download/v${GO_GETTEXT_VERSION##v}/go-xgettext-${GO_GETTEXT_VERSION##v}-linux-amd64" -o /usr/local/bin/go-xgettext && \
-    chmod +x /usr/local/bin/go-xgettext && \
+    chmod 755 /usr/local/bin/go-xgettext && \
     npm install -g yarn --force && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
