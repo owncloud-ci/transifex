@@ -11,7 +11,7 @@ ARG BUILD_VERSION
 ARG GO_GETTEXT_VERSION
 
 # renovate: datasource=github-releases depName=transifex/cli
-ENV TRANSIFEX_VERSION="${BUILD_VERSION:-v1.6.10}"
+ENV TRANSIFEX_VERSION="${BUILD_VERSION:-v1.6.17}"
 
 # renovate: datasource=github-releases depName=owncloud-ci/gettext
 ENV GO_GETTEXT_VERSION="${GO_GETTEXT_VERSION:-v1.0.0}"
