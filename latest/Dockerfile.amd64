@@ -1,4 +1,4 @@
-FROM owncloudci/nodejs:18@sha256:1f0ef93c846f6597734c2f2cd31c5dd12cbc805e13bbd1f8af703436b71a6f8d
+FROM owncloudci/nodejs:24@sha256:415b8d893f9887f004d1127d68b7aeacb1f52b871feaad50ef7c976645fcc24c
 
 LABEL maintainer="ownCloud DevOps <devops@owncloud.com>"
 LABEL org.opencontainers.image.authors="ownCloud DevOps <devops@owncloud.com>"
